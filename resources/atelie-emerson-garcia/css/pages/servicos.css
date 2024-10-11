@@ -1,0 +1,11 @@
+.section-page-services{
+    background: rgb(231,231,231);
+    background: linear-gradient(90deg, rgba(231,231,231,1) 0%, rgba(255,255,255,1) 35%, rgba(231,231,231,1) 100%);
+}
+.section-page-services h2{
+    font-size: 2.6rem;
+    line-height: 3.2rem;
+}
+.section-page-services .section-page-banner h3{
+    font-size: 2rem;
+}

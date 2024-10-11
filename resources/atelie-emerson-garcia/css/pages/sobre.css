@@ -1,0 +1,9 @@
+.section-page-about{
+    position: relative;
+    width: 100%;
+    background: rgb(231,231,231);
+    background: linear-gradient(90deg, rgba(231,231,231,1) 0%, rgba(255,255,255,1) 35%, rgba(231,231,231,1) 100%);
+}
+.section-page-about .section-page-banner h2{
+    font-size: 2rem;
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/pages/index.css"/>
+    <title>Home | Ateliê Emerson Garcia</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar fixed text-white trx-all">
+          <div class="navbar-left">
+            <button id="burger" class="burger-elastic burger p-0 m-4">
+              <div class="burger-box">
+                <div class="burger-inner"></div>
+              </div>
+            </button>
+            <div class="input-search">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
+                <g fill-opacity="0" fill="#6c757d" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                  <path d="M0,256v-256h256v256z" id="bgRectangle"></path>
+                </g>
+                <g class="search-icon-f" fill="#6c757d" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                  <g transform="scale(5.12,5.12)">
+                    <path d="M21,3c-9.37891,0 -17,7.62109 -17,17c0,9.37891 7.62109,17 17,17c3.71094,0 7.14063,-1.19531 9.9375,-3.21875l13.15625,13.125l2.8125,-2.8125l-13,-13.03125c2.55469,-2.97656 4.09375,-6.83984 4.09375,-11.0625c0,-9.37891 -7.62109,-17 -17,-17zM21,5c8.29688,0 15,6.70313 15,15c0,8.29688 -6.70312,15 -15,15c-8.29687,0 -15,-6.70312 -15,-15c0,-8.29687 6.70313,-15 15,-15z"></path>
+                  </g>
+                </g>
+              </svg>
+              <input id="input-search" type="text">
+              <ul id="autocomplete-list"></ul>
+            </div>
+            <!-- <ul id="navbar-items" class="navbar-items closed trx-all">
+              <li><a id="home" href="/">HOME</a></li>
+              <li><a id="sobre" href="/sobre.html">SOBRE</a></li>
+              <li><a id="design" href="/design.html">DESIGN</a></li>
+              <li><a id="arquitetura" href="/arquitetura.html">ARQUITETURA</a></li>
+              <li><a id="principais-clientes" href="/principais-clientes.html">PRINCIPAIS CLIENTES</a></li>
+              <li><a id="onde" href="/onde.html">ONDE</a></li>
+              <li><a id="contato" href="/contato.html">CONTATO</a></li>
+              <li class="social-responsive-nav">
+                <nav class="navbar-social-media">
+                  <ul>
+                    <li>
+                      <a class="text-center" target="_blank" href="https://www.facebook.com/people/Ateli%C3%AA-Emerson-Garcia/100068925143822/?locale=pt_BR">
+                        <figure class="mb-0">
+                          <img class="social-media-button" src="./assets/images/facebook.svg" alt="Ateliê Emerson Garcia Facebook"/>
+                        </figure>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="text-center" target="_blank" href="https://www.instagram.com/atelieemersongarcia">
+                        <figure class="mb-0">
+                          <img class="social-media-button" src="./assets/images/instagram.svg" alt="Ateliê Emerson Garcia Instagram"/>
+                        </figure>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </li>
+            </ul> -->
+          </div>
+          <div class="navbar-center">
+            <a href="/" class="navbar-brand">
+              <figure class="mb-0 p-3">
+                <img src="./assets/images/logo.webp" alt="Site Logo">
+              </figure>
+            </a>
+          </div>
+          <div class="navbar-right">
+            <nav class="navbar-social-media">
+              <ul>
+                <li>
+                  <a target="_blank" href="https://www.instagram.com/atelieemersongarcia">
+                    <figure class="mb-0">
+                      <img class="social-media-button" src="./assets/images/instagram.svg" alt="Ateliê Emerson Garcia Instagram"/>
+                    </figure>
+                  </a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.facebook.com/people/Ateli%C3%AA-Emerson-Garcia/100068925143822/?locale=pt_BR">
+                    <figure class="mb-0">
+                      <img class="social-media-button" src="./assets/images/facebook.svg" alt="Ateliê Emerson Garcia Facebook"/>
+                    </figure>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="navbar-bottom">
+            <nav>
+              <ul id="navbar-items" class="navbar-items closed trx-all">
+                <li><a id="home" href="/">HOME</a></li>
+                <li><a id="sobre" href="/sobre.html">SOBRE</a></li>
+                <li><a id="design" href="/design.html">DESIGN</a></li>
+                <li><a id="arquitetura" href="/arquitetura.html">ARQUITETURA</a></li>
+                <li><a id="principais-clientes" href="/principais-clientes.html">PRINCIPAIS CLIENTES</a></li>
+                <li><a id="onde" href="/onde.html">ONDE</a></li>
+                <li><a id="contato" href="/contato.html">CONTATO</a></li>
+                <!-- <li class="social-responsive-nav">
+                  <nav class="navbar-social-media">
+                    <ul>
+                      <li>
+                        <a class="text-center" target="_blank" href="https://www.facebook.com/people/Ateli%C3%AA-Emerson-Garcia/100068925143822/?locale=pt_BR">
+                          <figure class="mb-0">
+                            <img class="social-media-button" src="./assets/images/facebook.svg" alt="Ateliê Emerson Garcia Facebook"/>
+                          </figure>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="text-center" target="_blank" href="https://www.instagram.com/atelieemersongarcia">
+                          <figure class="mb-0">
+                            <img class="social-media-button" src="./assets/images/instagram.svg" alt="Ateliê Emerson Garcia Instagram"/>
+                          </figure>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </li> -->
+              </ul>
+            </nav>
+          </div>
+        </nav>
+    </header>
+    <main>
+      <section class="section section-banner">
+        <div class="carousel">
+          <!-- <div class="arrow l" onclick="prev()">
+          </div> -->
+          <div class="slide" style="background: url('/assets/images/house2.webp');">
+            <div class="container h-100">
+              <div class="row h-100">
+                <div class="col-12 h-100">
+                  <div class="caption">
+                    <div class="caption-mask">
+                      <h3>Arquitetura</h3>
+                      <p>Projetos que transformam paisagens e ambientes.</p>
+                      <a class="btn-bottom-section p-2 my-3" href="#">Conhecer</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slide" style="background: url('/assets/images/house1.webp');">
+            <div class="container h-100">
+              <div class="row h-100">
+                <div class="col-12 h-100">
+                  <div class="caption">
+                    <div class="caption-mask">
+                      <h3>Responsabilidade</h3>
+                      <p>Nossa missão é contribuir com o meio ambiente, reutilizando materiais e transformando em arte.</p>
+                      <a class="btn-bottom-section p-2 my-3" href="/sobre.html">Saber mais</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slide" style="background: url('/assets/images/house3.webp');">
+            <div class="container h-100">
+              <div class="row h-100">
+                <div class="col-12 h-100">
+                  <div class="caption">
+                    <div class="caption-mask">
+                      <h3>Desgin</h3>
+                      <p>Peças feitas à mão de forma sustentável e criativa.</p>
+                      <a class="btn-bottom-section p-2 my-3" href="#">Conhecer</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slide" style="background: url('/assets/images/house2.webp');">
+            <div class="container h-100">
+              <div class="row h-100">
+                <div class="col-12 h-100">
+                  <div class="caption">
+                    <div class="caption-mask">
+                      <h3>Sustentabilidade</h3>
+                      <p>Usamos como principal matéria prima, a madeira maciça de demolição, madeiras coletadas na natureza e resíduos florestais.</p>
+                      <a class="btn-bottom-section p-2 my-3" href="/sobre.html">Saiba mais</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slide" style="background: url('/assets/images/house3.webp');">
+            <div class="container h-100">
+              <div class="row h-100">
+                <div class="col-12 h-100">
+                  <div class="caption">
+                    <div class="caption-mask">
+                      <h3>Contate-nos</h3>
+                      <p>Entre em contato conosco para mais informações</p>
+                      <button class="btn-whatsapp">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
+                          <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(16,16)"><path d="M7.5,1c-3.58594,0 -6.5,2.91406 -6.5,6.5c0,1.29688 0.41797,2.48438 1.07031,3.5l-1.11719,3.12109l3.47656,-0.98047c0.92188,0.50391 1.94531,0.85938 3.07031,0.85938c3.58594,0 6.5,-2.91406 6.5,-6.5c0,-3.58594 -2.91406,-6.5 -6.5,-6.5zM7.5,2c3.04297,0 5.5,2.45703 5.5,5.5c0,3.04297 -2.45703,5.5 -5.5,5.5c-1.04297,0 -2.00781,-0.29297 -2.84375,-0.79687l-0.18359,-0.11328l-1.92578,0.53906l0.625,-1.73437l-0.15234,-0.21094c-0.64062,-0.90234 -1.01953,-1.99609 -1.01953,-3.18359c0,-3.04297 2.45703,-5.5 5.5,-5.5zM5.0625,4c-0.11328,0 -0.30078,0.04688 -0.46094,0.23438c-0.15625,0.18359 -0.60156,0.63281 -0.60156,1.54688c0,0.91016 0.61719,1.79297 0.70313,1.91797c0.08594,0.125 1.21484,1.99609 2.94141,2.80078c0.41016,0.19141 0.73047,0.30469 0.98047,0.39063c0.41406,0.14063 0.78906,0.12109 1.08594,0.07422c0.33203,-0.05469 1.01953,-0.44922 1.16406,-0.88281c0.14063,-0.43359 0.14453,-0.80469 0.09766,-0.88281c-0.03906,-0.07812 -0.15625,-0.125 -0.32812,-0.21484c-0.17187,-0.09375 -1.01953,-0.54297 -1.17578,-0.60156c-0.15625,-0.06641 -0.27344,-0.09375 -0.39062,0.08984c-0.11328,0.1875 -0.44141,0.60547 -0.54297,0.72656c-0.10156,0.125 -0.19922,0.14063 -0.37109,0.04688c-0.17578,-0.09375 -0.73047,-0.28906 -1.38672,-0.92187c-0.51172,-0.49219 -0.85937,-1.09766 -0.95703,-1.28516c-0.10156,-0.1875 -0.01172,-0.28516 0.07422,-0.375c0.07813,-0.08594 0.17188,-0.21875 0.25781,-0.32812c0.08594,-0.10547 0.11328,-0.1875 0.17188,-0.30859c0.05859,-0.125 0.03125,-0.23437 -0.01172,-0.32422c-0.04687,-0.09375 -0.39062,-1.00781 -0.53125,-1.37891c-0.14062,-0.35938 -0.28516,-0.3125 -0.39062,-0.31641c-0.09766,-0.00781 -0.21484,-0.00781 -0.32812,-0.00781z"></path></g></g>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="arrow r" onclick="next()">
+          </div> -->
+        </div>
+      </section>
+      <!-- <section class="section section-about py-3 py-lg-5">
+        <div class="container h-100 py-3 pt-lg-5">
+          <div class="row">
+            <div class="col-md-6">
+              <h2>Sobre o ateliê</h2>
+              <article>
+                  <h3>um pouquinho dessa história</h3>
+                  <p class="mt-3">
+                    Quisque non sem maximus, lacinia ex sit amet, convallis erat. Proin accumsan, ipsum eu placerat suscipit, urna sapien convallis sem, malesuada pretium lorem libero sit amet libero. Quisque eget turpis ut diam volutpat gravida. Donec vel eros sit amet orci molestie pharetra. Cras sed dolor mi. Nullam ut consequat ex, molestie semper eros. Pellentesque tristique vulputate tellus ac pharetra. Vestibulum in dignissim leo, ac suscipit nibh.
+                  </p>
+              </article>
+            </div>
+            <div class="col-md-6 mt-3 mt-lg-0">
+              <figure class="mb-0 side-image">
+                <img src="./assets/images/interior.webp" alt="Sobre mim">
+                <div class="mask"></div>
+              </figure>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 mt-5">
+              <a class="btn-bottom-section p-2" href="/sobre.html">Veja mais sobre a nossa história</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section section-services">
+        <div class="bg"></div>
+        <div class="container h-100">
+          <div class="row h-100">
+            <div class="col-12 mt-3 mt-sm-5">
+              <h2>Conheça os nossos serviços</h2>
+            </div>
+            <div class="col-12">
+              <div class="service-cards mt-5">
+                <div class="container-fluid">
+                  <div id="services-row" class="row">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section section-clients">
+        <div class="container h-100">
+          <div class="row h-100">
+            <div class="col-12 mt-3 mt-sm-5">
+              <h2 class="text-center">Nossos principais clientes</h2>
+            </div>
+            <div class="col-12 py-5">
+              <div class="thin-auto-slider">
+                <div class="thin-auto-slide-track">
+                  <div style="background-image: url('/assets/images/clients/client1.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client2.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client3.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client4.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client5.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client6.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client7.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client8.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client9.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client10.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client11.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client12.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client13.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client14.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client15.png');" class="thin-auto-slide"></div>
+                  <div style="background-image: url('/assets/images/clients/client16.png');" class="thin-auto-slide"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- <footer>
+        <div class="container py-5">
+          <div class="row">
+            <div class="col-12">
+              <p class="footer-text">MinhaEmpresa.com.br. Todos os direitos reservados.</p>
+            </div>
+          </div>
+        </div>
+      </footer> -->
+    </main>
+    <script src="./js/index.js"></script>
+    <script src="./js/carousel.js"></script>
+    <!-- <script src="./js/services.js"></script> -->
+</body>
+</html>

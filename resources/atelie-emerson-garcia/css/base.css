@@ -1,0 +1,20 @@
+:root {
+    --primary-color: #212121;
+    --primary-color-opack: rgba(33, 33, 33, 0.4);
+    --primary-color-dark-opack: rgba(13, 13, 13, 0.6);
+    --secondary-color: #2d2d2d;
+    --text-color: #495057;
+    --text-light-color: #8c8c8c;
+    --light-gray: #e4e4e4;
+    --shadow-color: rgba(99, 99, 99, 0.5);
+    --bg-color: #eff2f4;
+    --white: #fff;
+    --danger: #d92550;
+    --warning: #f3d946;
+    --success: #58cb58;
+    --info: #30b1ff;
+    --border-general-color: #dee2e6;
+    --code-color: #e83e8c;
+    --menu-base:#d0d0d0;
+    --menu-hover:#818181;
+}

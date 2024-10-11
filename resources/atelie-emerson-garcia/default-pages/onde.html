@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <link rel="stylesheet" type="text/css" href="./css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/pages/onde.css"/>
+    <title>Onde Encontrar | Ateliê Emerson Garcia</title>
+</head>
+<body>
+  <header>
+    <nav class="navbar trx-all">
+      <div class="navbar-left">
+        <button id="burger" class="burger-elastic burger p-4">
+          <div class="burger-box">
+            <div class="burger-inner"></div>
+          </div>
+        </button>
+        <div class="input-search">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
+            <g fill-opacity="0" fill="#6c757d" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+              <path d="M0,256v-256h256v256z" id="bgRectangle"></path>
+            </g>
+            <g class="search-icon-f" fill="#6c757d" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+              <g transform="scale(5.12,5.12)">
+                <path d="M21,3c-9.37891,0 -17,7.62109 -17,17c0,9.37891 7.62109,17 17,17c3.71094,0 7.14063,-1.19531 9.9375,-3.21875l13.15625,13.125l2.8125,-2.8125l-13,-13.03125c2.55469,-2.97656 4.09375,-6.83984 4.09375,-11.0625c0,-9.37891 -7.62109,-17 -17,-17zM21,5c8.29688,0 15,6.70313 15,15c0,8.29688 -6.70312,15 -15,15c-8.29687,0 -15,-6.70312 -15,-15c0,-8.29687 6.70313,-15 15,-15z"></path>
+              </g>
+            </g>
+          </svg>
+          <input id="input-search" type="text">
+          <ul id="autocomplete-list"></ul>
+        </div>
+        <!-- <ul id="navbar-items" class="navbar-items closed trx-all">
+          <li><a id="home" href="/">HOME</a></li>
+          <li><a id="sobre" href="/sobre.html">SOBRE</a></li>
+          <li><a id="design" href="/design.html">DESIGN</a></li>
+          <li><a id="arquitetura" href="/arquitetura.html">ARQUITETURA</a></li>
+          <li><a id="principais-clientes" href="/principais-clientes.html">PRINCIPAIS CLIENTES</a></li>
+          <li><a id="onde" href="/onde.html">ONDE</a></li>
+          <li><a id="contato" href="/contato.html">CONTATO</a></li>
+          <li class="social-responsive-nav">
+            <nav class="navbar-social-media">
+              <ul>
+                <li>
+                  <a class="text-center" target="_blank" href="https://www.facebook.com/people/Ateli%C3%AA-Emerson-Garcia/100068925143822/?locale=pt_BR">
+                    <figure class="mb-0">
+                      <img class="social-media-button" src="./assets/images/facebook.svg" alt="Ateliê Emerson Garcia Facebook"/>
+                    </figure>
+                  </a>
+                </li>
+                <li>
+                  <a class="text-center" target="_blank" href="https://www.instagram.com/atelieemersongarcia">
+                    <figure class="mb-0">
+                      <img class="social-media-button" src="./assets/images/instagram.svg" alt="Ateliê Emerson Garcia Instagram"/>
+                    </figure>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </li>
+        </ul> -->
+      </div>
+      <div class="navbar-center">
+        <a href="/" class="navbar-brand">
+          <figure class="mb-0 p-3">
+            <img src="./assets/images/logo.webp" alt="Site Logo">
+          </figure>
+        </a>
+      </div>
+      <div class="navbar-right">
+        <nav class="navbar-social-media">
+          <ul>
+            <li>
+              <a target="_blank" href="https://www.instagram.com/atelieemersongarcia">
+                <figure class="mb-0">
+                  <img class="social-media-button" src="./assets/images/instagram.svg" alt="Ateliê Emerson Garcia Instagram"/>
+                </figure>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" href="https://www.facebook.com/people/Ateli%C3%AA-Emerson-Garcia/100068925143822/?locale=pt_BR">
+                <figure class="mb-0">
+                  <img class="social-media-button" src="./assets/images/facebook.svg" alt="Ateliê Emerson Garcia Facebook"/>
+                </figure>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="navbar-bottom">
+        <nav>
+          <ul id="navbar-items" class="navbar-items closed trx-all">
+            <li><a id="home" href="/">HOME</a></li>
+            <li><a id="sobre" href="/sobre.html">SOBRE</a></li>
+            <li><a id="design" href="/design.html">DESIGN</a></li>
+            <li><a id="arquitetura" href="/arquitetura.html">ARQUITETURA</a></li>
+            <li><a id="principais-clientes" href="/principais-clientes.html">PRINCIPAIS CLIENTES</a></li>
+            <li><a id="onde" href="/onde.html">ONDE</a></li>
+            <li><a id="contato" href="/contato.html">CONTATO</a></li>
+            <!-- <li class="social-responsive-nav">
+              <nav class="navbar-social-media">
+                <ul>
+                  <li>
+                    <a class="text-center" target="_blank" href="https://www.facebook.com/people/Ateli%C3%AA-Emerson-Garcia/100068925143822/?locale=pt_BR">
+                      <figure class="mb-0">
+                        <img class="social-media-button" src="./assets/images/facebook.svg" alt="Ateliê Emerson Garcia Facebook"/>
+                      </figure>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="text-center" target="_blank" href="https://www.instagram.com/atelieemersongarcia">
+                      <figure class="mb-0">
+                        <img class="social-media-button" src="./assets/images/instagram.svg" alt="Ateliê Emerson Garcia Instagram"/>
+                      </figure>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </li> -->
+          </ul>
+        </nav>
+      </div>
+    </nav>
+  </header>
+    <main>
+      <section class="section">
+        <div class="section-page-banner">
+          <div class="bg-page-banner"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <h2>Onde nos Encontrar</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section section-page-onde">
+        <div class="container">
+          <div id="locations-row" class="row py-3">
+            <!-- Content Here -->
+          </div>
+        </div>
+      </section>
+      <section class="section section-map py-5">
+        <h2 class="text-center">Venha nos visitar</h2>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <article class="page-article flxclctr">
+                <h3 class="py-5 mb-0 text-center">Estaremos felizes em recebê-lo!</h3>
+                <a target="_blank" href="https://www.google.com.br/maps/dir//Atelie+Emerson+Garcia,+R.+Benedito+Bandola+de+Oliveira,+101+-+Jardim+Elizabete,+Po%C3%A7os+de+Caldas+-+MG,+37704-360/@-21.7823779,-46.6407222,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x94c9db8247b09a1b:0xdaf8ab25d214df66!2m2!1d-46.5995239!2d-21.7824626!3e0?entry=ttu">
+                  <figure class="map-picture trx-all">
+                    <img src="./assets/images/mapa-atelie.webp" alt="">
+                  </figure>
+                </a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-12">
+            <p class="footer-text">MinhaEmpresa.com.br. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="./js/index.js"></script>
+    <script src="./js/onde.js"></script>
+</body>
+</html>

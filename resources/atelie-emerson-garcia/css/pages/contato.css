@@ -1,0 +1,7 @@
+.section-page-contact{
+    background: rgb(231,231,231);
+    background: linear-gradient(90deg, rgba(231,231,231,1) 0%, rgba(255,255,255,1) 35%, rgba(231,231,231,1) 100%);
+}
+.section-page-contact .section-page-banner h2{
+    font-size: 2rem;
+}
