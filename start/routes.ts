@@ -54,6 +54,9 @@ Route.group(() => {
 
   //Projetos
   Route.resource('/projects', 'Admin/ProjectsController')
+
+  //Projetos Step
+  Route.resource('/project-steps', 'Admin/ProjectStepsController')
 }).prefix('/admin').middleware(['auth'])
 
 Route.group(() => {}).prefix('/client').middleware(['auth'])

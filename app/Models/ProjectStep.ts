@@ -1,15 +1,14 @@
-import { BaseModel, beforeFetch, beforeFind, belongsTo, BelongsTo, column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
-import { list_filters } from 'App/Helpers'
-import { softDelete, softDeleteQuery } from 'App/Services/SoftDelete'
 import { DateTime } from 'luxon'
 
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Company from './Company'
+import { BaseModel, beforeFetch, beforeFind, belongsTo, BelongsTo, column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import Project from './Project'
+import { list_filters } from 'App/Helpers'
+import { softDeleteQuery, softDelete } from 'App/Services/SoftDelete'
+import ProjectStepUser from './ProjectStepUser'
 import User from './User'
-import ProjectUser from './ProjectUser'
-import ProjectStep from './ProjectStep'
 
-export default class Project extends BaseModel {
+export default class ProjectStep extends BaseModel {
 
   static get filters () {
     return {
@@ -59,16 +58,19 @@ export default class Project extends BaseModel {
   public slug: string
 
   @column()
-  public color: string
+  public project_id: number
 
-  @column()
-  public company_id: number
-
-  @belongsTo(() => Company, {
+  @belongsTo(() => Project, {
     localKey: 'id',
-    foreignKey: 'company_id'
+    foreignKey: 'project_id'
   })
-  public company: BelongsTo<typeof Company>
+  public user: BelongsTo<typeof Project>
+
+  @hasMany(() => ProjectStepUser, {
+    localKey: 'id',
+    foreignKey: 'project_step_id'
+  })
+  public members: HasMany<typeof ProjectStepUser>
 
   @column()
   public user_id: number
@@ -79,23 +81,11 @@ export default class Project extends BaseModel {
   })
   public author: BelongsTo<typeof User>
 
-  @hasMany(() => ProjectUser, {
-    localKey: 'id',
-    foreignKey: 'project_id'
-  })
-  public members: HasMany<typeof ProjectUser>
-
-  @hasMany(() => ProjectStep, {
-    localKey: 'id',
-    foreignKey: 'project_id'
-  })
-  public steps: HasMany<typeof ProjectStep>
-
   @column()
   public expires_at: DateTime | string
 
-  @column()
-  public deleted_at: DateTime | string
+  @column.dateTime({ serializeAs: null})
+  public deletedAt: DateTime
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -128,4 +118,5 @@ export default class Project extends BaseModel {
 
     return await query.paginate(pagination.page, pagination.limit)
   }
+
 }

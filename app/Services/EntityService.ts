@@ -3,49 +3,32 @@ import { slug_parse } from "App/Helpers";
 
 class EntityService {
   public async slugfy(modelName: string, entity: any, trx: TransactionClientContract){
-      let model: any = await import(`App/Models/${modelName}`)
 
-      let slug = await slug_parse(entity.name || entity.title)
+    let model: any = await import(`App/Models/${modelName}`)
 
-      let check = await model.default.query().where('slug', 'like', `%${slug}%`)
+    // Gerando o slug inicial (transformando o nome em slug)
+    const baseSlug = await slug_parse(entity.name || entity.title)
 
-      if(check && check.length > 0){
-        let slugList = check.map(({ slug }) => slug)
-        const numbers: number[] = [];
+    // Verificando se o slug já existe
+    let uniqueSlug = baseSlug;
+    let counter = 1;
 
-        slugList.forEach(model => {
-          const match = model.match(/(\d+)$/);
-          if (match) {
-              numbers.push(parseInt(match[1], 10));
-          }
-        });
+    let check = await model.default.query().where('slug', 'like', `%${baseSlug}%`).whereNot('id', entity.id)
 
-        numbers.sort((a, b) => a - b);
+    if(check.length == 0){
+      return
+    }
 
-        const missingNumbers: number[] = [];
-        if (numbers.length > 0) {
-            for (let i = numbers[0]; i <= numbers[numbers.length - 1]; i++) {
-                if (!numbers.includes(i)) {
-                    missingNumbers.push(i);
-                }
-            }
-        }
+    // Verifica se o slug já existe e incrementa o contador até encontrar um disponível
+    while (check.some(entity => entity.slug === uniqueSlug)) {
+      uniqueSlug = `${baseSlug}${counter}`;
+      counter++;
+    }
 
-        missingNumbers.sort((a, b) => a - b);
+    entity.merge({slug: uniqueSlug})
 
-        if(missingNumbers.length > 0){
-          slug = `${slug}${missingNumbers[0]}`
-        }else if(numbers.length > 0){
-          slug = `${slug}${(numbers[numbers.length-1])+1}`
-        }
+    await entity.save(trx)
 
-      }
-
-      entity.merge({
-        slug
-      })
-
-      await entity.save(trx);
   }
 }
 export default EntityService

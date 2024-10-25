@@ -137,6 +137,27 @@ export default class extends BaseSeeder {
         slug: 'deletar-projetos',
         hide_client: true,
       },
+      // Etapas de Projetos
+      {
+        name: 'Visualizar Etapas de Projetos',
+        slug: 'visualizar-etapas-de-projetos',
+        hide_client: true,
+      },
+      {
+        name: 'Criar Etapas de Projetos',
+        slug: 'criar-etapas-de-projetos',
+        hide_client: true,
+      },
+      {
+        name: 'Editar Etapas de Projetos',
+        slug: 'editar-etapas-de-projetos',
+        hide_client: true,
+      },
+      {
+        name: 'Deletar Etapas de Projetos',
+        slug: 'deletar-etapas-de-projetos',
+        hide_client: true,
+      },
     ])
   }
 }

@@ -64,7 +64,7 @@ export default class ProjectsController {
 
     async show({ params : { id }, response }: HttpContextContract) {
         try {
-            const project = await where_slug_or_id(Project, id)
+            let project = await where_slug_or_id(Project, id)
             await project.load('members', builder => {
               builder.preload('user', builder => {
                 builder.select(['id', 'name', 'slug'])
@@ -74,28 +74,70 @@ export default class ProjectsController {
               builder.select(['id', 'name', 'slug'])
             })
             await project.load('company')
+            await project.load('steps', builder => {
+              builder.preload('members', builder => {
+                builder.preload('user', builder => {
+                  builder.select(['id', 'name', 'slug'])
+                })
+              })
+            })
+
+            project = project.toJSON()
+
+            const members = project.members.map((member) => {
+              return {
+                id: member.user.id,
+                name: member.user.name,
+                slug: member.user.slug,
+              };
+            });
+            project.members = members;
+
+            project.steps = project.steps.map(step => {
+              if(step.members.length > 0){
+                step.members = step.members.map(member => {
+                  return {
+                    id: member.user.id,
+                    name: member.user.name,
+                    slug: member.user.slug,
+                  }
+                })
+
+                return step
+              }else{
+                return step
+              }
+            })
+
             return response.status(200).send({data: project})
         } catch (error) {
             throw error
         }
     }
 
-    async update({ params : { id }, request, response }: HttpContextContract) {
-        const trx = await Database.beginGlobalTransaction()
+    async update({ params : { id }, request, response, auth }: HttpContextContract) {
+      const enServ: EntityService = new EntityService();
+      const trx = await Database.beginGlobalTransaction()
         try {
-            const { name, color, company_id, members, expires_at } = request.all()
+            const { name, color, members, expires_at } = await request.validate(ProjectValidator)
             const project = await where_slug_or_id(Project, id, trx)
             if(!project){
                 return response.status(404).send({
                     message: 'Projeto não encontrado'
                 })
             }
-            project.merge({name, color, company_id, members, expires_at})
+            project.merge({name, color, company_id: auth?.user?.company_id, members, expires_at: expires_at.toJSDate()})
+            await project.save()
+            await enServ.slugfy('Project', project, trx)
             if(Array.isArray(members)){
-              await project.related('members').delete(trx)
-              await project.related('members').createMany(members, trx)
+              await project.related('members').query().delete(trx)
+              await project.related('members').createMany(members.map(m => {
+                return {
+                  user_id: m,
+                  project_id: project.id
+                }
+              }))
             }
-            await project.save(trx)
             await trx.commit()
             return response.status(200).send({data: project})
         } catch (error) {

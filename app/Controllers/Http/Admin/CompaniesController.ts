@@ -1,8 +1,9 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
-import { generate_filters_to_send, slug_parse, transform_pagination, where_slug_or_id } from 'App/Helpers'
+import { generate_filters_to_send, transform_pagination, where_slug_or_id } from 'App/Helpers'
 import Address from 'App/Models/Address'
 import Company from 'App/Models/Company'
+import EntityService from 'App/Services/EntityService'
 //import AuthService from 'App/Services/AuthService'
 import CompanyValidator from 'App/Validators/CompanyValidator'
 
@@ -28,23 +29,25 @@ export default class CompaniesController {
     }
 
     async store(ctx: HttpContextContract) {
-        let trx = await Database.beginGlobalTransaction()
-        try {
-            const { request, response } = ctx
-            const { name, address } = await request.validate(CompanyValidator)
-            const slug: string = await slug_parse(name)
-            const company = await Company.create({name,slug})
-            if(address && Object.keys(address).length > 0){
-                const newAddress = await Address.create(address, trx)
-                company.merge({address_id: newAddress.id})
-                await company.save()
-            }
-            await trx.commit()
-            return response.status(200).send({data: company})
-        } catch (error) {
-            await trx.rollback()
-            throw error
-        }
+      const enServ: EntityService = new EntityService();
+      let trx = await Database.beginGlobalTransaction()
+      try {
+          const { request, response } = ctx
+          const { name, address } = await request.validate(CompanyValidator)
+          const company = await Company.create({name}, trx)
+          await enServ.slugfy('Company', company, trx)
+
+          if(address && Object.keys(address).length > 0){
+              const newAddress = await Address.create(address, trx)
+              company.merge({address_id: newAddress.id})
+              await company.save()
+          }
+          await trx.commit()
+          return response.status(200).send({data: company})
+      } catch (error) {
+          await trx.rollback()
+          throw error
+      }
     }
 
     async show({ params : { id }, response }: HttpContextContract) {
@@ -58,17 +61,17 @@ export default class CompaniesController {
     }
 
     async update({ params : { id }, request, response }: HttpContextContract) {
+        const enServ: EntityService = new EntityService();
         const trx = await Database.beginGlobalTransaction()
         try {
             const { name, address } = request.all()
-            const slug: string = await slug_parse(name)
             const company = await where_slug_or_id(Company, id, trx)
             if(!company){
                 return response.status(404).send({
                     message: 'Unidade não encontrada'
                 })
             }
-            company.merge({name, slug})
+            company.merge({name})
             if(address && Object.keys(address).length > 0){
                 let companyAddress
                 if(company.address_id){
@@ -79,7 +82,8 @@ export default class CompaniesController {
                     companyAddress = await Address.create(address, trx)
                 }
                 company.merge({address_id: companyAddress.id})
-                await company.save()
+                await company.save(trx)
+                await enServ.slugfy('Company', company, trx)
             }
             await company.save()
             await trx.commit()

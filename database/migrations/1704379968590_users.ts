@@ -10,6 +10,8 @@ export default class extends BaseSchema {
       table.string('slug')
       table.string('password')
       table.string('email', 255).notNullable().unique()
+      table.string('cpf', 11)
+      table.string('phone', 11)
       table.string('remember_me_token').nullable()
       table.integer('position_id').unsigned().references('id').inTable('positions').onDelete('SET NULL')
       table.integer('department_id').unsigned().references('id').inTable('departments').onDelete('SET NULL')

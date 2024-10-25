@@ -2,6 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
 import { generate_filters_to_send, slug_parse, transform_pagination, where_slug_or_id } from 'App/Helpers'
 import Department from 'App/Models/Department'
+import EntityService from 'App/Services/EntityService'
 import DepartmentValidator from 'App/Validators/DepartmentValidator'
 
 export default class DepartmentsController {
@@ -24,12 +25,13 @@ export default class DepartmentsController {
     }
 
     async store(ctx: HttpContextContract) {
+      const enServ: EntityService = new EntityService();
         let trx = await Database.beginGlobalTransaction()
         try {
             const { request, response } = ctx
             const { name, permissions } = await request.validate(DepartmentValidator)
-            const slug: string = await slug_parse(name)
-            const department = await Department.create({name,slug})
+            const department = await Department.create({name}, trx)
+            await enServ.slugfy('Department', department, trx)
             if(permissions && Array.isArray(permissions)){
                 await department.related('permissions').sync(permissions, undefined, trx)
             }
@@ -52,18 +54,19 @@ export default class DepartmentsController {
     }
 
     async update({ params : { id }, request, response }: HttpContextContract) {
-        const trx = await Database.beginGlobalTransaction()
+      const enServ: EntityService = new EntityService();
+      const trx = await Database.beginGlobalTransaction()
         try {
             const { name, permissions } = request.all()
-            const slug: string = await slug_parse(name)
             const department = await where_slug_or_id(Department, id, trx)
             if(!department){
                 return response.status(404).send({
                     message: 'Departamento não encontrado'
                 })
             }
-            department.merge({name, slug})
-            await department.save()
+            department.merge({name})
+            await department.save(trx)
+            await enServ.slugfy('Department', department, trx)
             if(permissions && Array.isArray(permissions)){
                 await department.related('permissions').sync(permissions, undefined, trx)
             }

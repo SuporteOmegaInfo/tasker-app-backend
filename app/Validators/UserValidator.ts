@@ -36,6 +36,14 @@ export default class UserValidator {
       rules.minLength(3),
       rules.maxLength(150)
     ]),
+    cpf: schema.string({}, [
+      rules.minLength(1),
+      rules.maxLength(11)
+    ]),
+    phone: schema.string({}, [
+      rules.minLength(1),
+      rules.maxLength(11)
+    ]),
     position_id: schema.number([
       rules.exists(['positions', 'id']),
       rules.nullable()

@@ -12,7 +12,7 @@ export default class PermissionsController {
 
           if(auth.user){
             let permissions: any = Permission.query().whereNot('id', 1).whereNot('hide_admin', 1)
-            if(auth.user.department_id > 2){
+            if(auth.user.id != 1){
               permissions.whereNotIn('slug', [
                 'visualizar-departamentos',
                 'criar-departamentos',

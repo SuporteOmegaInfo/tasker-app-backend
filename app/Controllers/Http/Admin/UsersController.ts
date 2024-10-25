@@ -17,12 +17,14 @@ export default class UsersController {
             }
             users = await User.listFiltersPaginate(ctx , users)
             users = transform_pagination(users.toJSON())
-            users = users.data.map(user => {
+            users.data = users.data.map(user => {
               return {
                 id: user.id,
                 name: user.name,
                 slug: user.slug,
                 email: user.email,
+                cpf: user.cpf,
+                phone: user.phone,
                 position_id: user.position_id,
                 position: user.position,
                 department_id: user.department_id,
@@ -30,12 +32,13 @@ export default class UsersController {
                 company_id: user.company_id,
                 company: user.company,
                 permissions: user.permissions,
+                created_at: user.createdAt
               }
             })
 
             const filters = await generate_filters_to_send(User)
 
-            return response.status(200).send({...{ data: users }, filters})
+            return response.status(200).send({...users, filters})
         } catch (error) {
             throw error
         }
@@ -48,10 +51,10 @@ export default class UsersController {
       const authServ : AuthService = new AuthService()
 
       try {
-          const { name, email, permissions, position_id, department_id, company_id } = await request.validate(UserValidator)
+          const { name, email, cpf, phone, permissions, position_id, department_id, company_id } = await request.validate(UserValidator)
 
           const user = await User.create({
-            name, email, position_id, department_id, company_id
+            name, email, position_id, department_id, company_id, cpf, phone,
           }, trx)
 
           await enServ.slugfy('User', user, trx)
@@ -100,10 +103,10 @@ export default class UsersController {
         const trx = await Database.beginGlobalTransaction()
 
         try {
-            const { name, permissions, position_id, department_id, company_id } = await request.validate(UserValidator)
+            const { name, permissions, position_id, department_id, company_id, cpf, phone } = await request.validate(UserValidator)
             const user = await where_slug_or_id(User, id, trx)
             const slug: string = await slug_parse(name)
-            user.merge({name, slug, department_id, position_id, company_id})
+            user.merge({name, slug, department_id, position_id, company_id, cpf, phone})
             await user.save(trx)
             if(Array.isArray(permissions)){
                 await user.related('permissions').sync(permissions, undefined, trx)

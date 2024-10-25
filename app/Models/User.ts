@@ -24,30 +24,35 @@ export default class User extends BaseModel {
         type: 'string',
         isLike: true,
       },
+      cpf: {
+        field: 'cpf',
+        placeholder: 'CPF',
+        type: 'string',
+      },
       email: {
         field: 'email',
         placeholder: 'E-mail',
         type: 'string',
         isLike: true,
       },
-      // position_id: {
-      //   field: 'position_id',
-      //   placeholder: 'Perfil',
-      //   type: 'dropdown',
-      //   modelName: 'Position'
-      // },
-      // department_id: {
-      //   field: 'department_id',
-      //   placeholder: 'Departamento',
-      //   type: 'dropdown',
-      //   modelName: 'Department'
-      // },
-      company_id: {
-        field: 'company_id',
-        placeholder: 'Unidade',
+      position_id: {
+        field: 'position_id',
+        placeholder: 'Perfil',
         type: 'dropdown',
-        modelName: 'company'
+        modelName: 'Position'
       },
+      department_id: {
+        field: 'department_id',
+        placeholder: 'Departamento',
+        type: 'dropdown',
+        modelName: 'Department'
+      },
+      // company_id: {
+      //   field: 'company_id',
+      //   placeholder: 'Unidade',
+      //   type: 'dropdown',
+      //   modelName: 'company'
+      // },
       order: {
         field: 'order',
         placeholder: 'Classificar',
@@ -86,6 +91,12 @@ export default class User extends BaseModel {
 
   @column()
   public slug: string
+
+  @column()
+  public cpf: string
+
+  @column()
+  public phone: string
 
   @column()
   public email: string
